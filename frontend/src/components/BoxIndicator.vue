@@ -9,7 +9,7 @@ import IconSale from './icons/IconSale.vue'
 
   <div class="w-[90%] flex flex-col items-center mt-6">
     <div class="flex justify-around w-full">
-      <div class="bg-green-400 flex flex-col items-center w-[30%] px-4 py-6 rounded-sm">
+      <div class="bg-green flex flex-col items-center w-[30%] px-4 py-6 rounded-sm">
         <div class="flex justify-center items-center gap-2">
           <IconSale />
           <h3 class="text-lg font-semibold">Valor de Vendas</h3>
