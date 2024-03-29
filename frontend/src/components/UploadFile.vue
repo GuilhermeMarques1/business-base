@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import api from '@/services/api'
+</script>
+
 <template>
   <div class="border border-dashed border-gray-400 rounded-lg p-14 mb-14">
     <div class="flex items-center justify-center mb-4">
@@ -38,12 +42,23 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   methods: {
-    handleFileUpload(event) {
-      const file = event.target.files[0]
-      console.log('Arquivo selecionado:', file)
+    handleFileUpload(event: Event) {
+      const fileInput = event.target as HTMLInputElement
+      if (!fileInput.files) {
+        return
+      }
+      const file = fileInput.files[0]
+      const formData = new FormData()
+      formData.append('file', file)
+
+      api.post('/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
     }
   }
 }
