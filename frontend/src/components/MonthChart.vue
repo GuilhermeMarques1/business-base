@@ -1,29 +1,42 @@
 <script setup lang="ts">
-import Chart from 'chart.js/auto'
+import Chart, { type ChartItem } from 'chart.js/auto'
 import { onMounted } from 'vue'
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June']
-
 const data = {
-  labels: labels,
+  labels: ['January', 'February', 'March', 'April'],
   datasets: [
     {
-      label: 'My first dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
+      type: 'bar',
+      label: 'Bar Dataset',
+      data: [10, 20, 30, 40],
       borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45]
+      backgroundColor: 'rgba(255, 99, 132, 0.2)'
+    },
+    {
+      type: 'line',
+      label: 'Line Dataset',
+      data: [10, 20, 30, 40],
+      fill: false,
+      borderColor: 'rgb(54, 162, 235)'
     }
   ]
 }
 
 const config = {
-  type: 'line',
+  type: 'scatter',
   data: data,
-  options: {}
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
 }
 
 onMounted(() => {
-  const myChart = new Chart(document.getElementById('myChart'), config)
+  const element = document.getElementById('myChart') as ChartItem
+  new Chart(element, config)
 })
 </script>
 
