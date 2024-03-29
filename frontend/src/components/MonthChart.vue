@@ -35,13 +35,13 @@ const config = {
 }
 
 onMounted(() => {
-  const element = document.getElementById('myChart') as ChartItem
+  const element = document.getElementById('monthChart') as ChartItem
   new Chart(element, config)
 })
 </script>
 
 <template>
   <div>
-    <canvas id="myChart"></canvas>
+    <canvas id="monthChart"></canvas>
   </div>
 </template>
