@@ -9,7 +9,7 @@ import IconSale from './icons/IconSale.vue'
 
   <div class="w-[90%] flex flex-col items-center mt-6">
     <div class="flex justify-around w-full">
-      <div class="bg-green flex flex-col items-center w-[30%] px-4 py-6 rounded-sm">
+      <div class="bg-green flex flex-col items-center w-[30%] px-4 py-6 rounded-md">
         <div class="flex justify-center items-center gap-2">
           <IconSale />
           <h3 class="text-lg font-semibold">Valor de Vendas</h3>
@@ -17,7 +17,7 @@ import IconSale from './icons/IconSale.vue'
         <div class="text-xl font-bold">{{ valorVendas }}</div>
       </div>
       <div class="border-l border-r border-gray-300 h-12 my-auto"></div>
-      <div class="flex flex-col items-center w-[30%] px-4 py-6 rounded-sm">
+      <div class="flex flex-col items-center w-[30%] px-4 py-6 rounded-md">
         <div class="flex justify-center items-center gap-2">
           <IconPeople />
           <h3 class="text-lg font-semibold">Número de Clientes</h3>
@@ -25,7 +25,7 @@ import IconSale from './icons/IconSale.vue'
         <div class="text-xl font-bold">{{ novosClientes }}</div>
       </div>
       <div class="border-l border-r border-gray-300 h-12 my-auto"></div>
-      <div class="flex flex-col items-center w-[30%] px-4 py-6 rounded-sm">
+      <div class="flex flex-col items-center w-[30%] px-4 py-6 rounded-md">
         <div class="flex justify-center items-center gap-2">
           <IconPercent />
           <h3 class="text-lg font-semibold">Churn Rate</h3>
@@ -40,7 +40,10 @@ import IconSale from './icons/IconSale.vue'
 export default {
   data() {
     return {
-      valorVendas: 0,
+      valorVendas: new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      }).format(0),
       novosClientes: 0,
       churnPercentage: 0
     }
