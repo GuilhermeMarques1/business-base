@@ -41,8 +41,8 @@ const handleClick = () => {
 
     <main class="flex flex-col items-center">
       <BoxIndicator />
-      <div class="flex flex-row gap-20 h-[500px] w-[80%] mt-14">
-        <div class="h-[500px] w-[80%]">
+      <div class="flex flex-row gap-20 h-[90%] w-[80%] mt-16">
+        <div class="h-[600px] w-[90%]">
           <MonthChart />
         </div>
         <div class="h-[200px] w-[30%]">
