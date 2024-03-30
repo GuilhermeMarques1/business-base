@@ -5,7 +5,7 @@ import IconSale from './icons/IconSale.vue'
 </script>
 
 <template>
-  <div class="mt-8 text-gray-500">Período: jan 2021 - mar 2024</div>
+  <div class="mt-8 text-gray-500">Período: {{ periodo }}</div>
 
   <div class="w-[90%] flex flex-col items-center mt-6">
     <div class="flex justify-around w-full">
@@ -37,15 +37,17 @@ import IconSale from './icons/IconSale.vue'
 </template>
 
 <script lang="ts">
+const localstg = localStorage.getItem('@business-base:data')
+const newData = JSON.parse(localstg || '[]')
+const length = newData.labels.length
+
 export default {
   data() {
     return {
-      valorVendas: new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-      }).format(0),
-      novosClientes: 0,
-      churnPercentage: 0
+      valorVendas: newData.total,
+      novosClientes: newData.customers,
+      churnPercentage: newData.churn,
+      periodo: `${newData.labels[0]} - ${newData.labels[length - 1]}`
     }
   }
 }

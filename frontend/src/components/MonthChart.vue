@@ -2,20 +2,23 @@
 import Chart, { type ChartItem } from 'chart.js/auto'
 import { onMounted } from 'vue'
 
+const localstg = localStorage.getItem('@business-base:data')
+const newData = JSON.parse(localstg || '[]')
+
 const data = {
-  labels: ['January', 'February', 'March', 'April'],
+  labels: newData.labels,
   datasets: [
     {
       type: 'bar',
       label: 'Bar Dataset',
-      data: [10, 20, 30, 40],
+      data: newData.data,
       borderColor: 'rgb(255, 99, 132)',
       backgroundColor: 'rgba(255, 99, 132, 0.2)'
     },
     {
       type: 'line',
       label: 'Line Dataset',
-      data: [10, 20, 30, 40],
+      data: newData.data,
       fill: false,
       borderColor: 'rgb(54, 162, 235)'
     }

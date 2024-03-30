@@ -54,11 +54,15 @@ export default {
       const formData = new FormData()
       formData.append('file', file)
 
-      api.post('/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })
+      api
+        .post('/upload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        .then((res) => {
+          localStorage.setItem('@business-base:data', JSON.stringify(res.data))
+        })
     }
   }
 }
