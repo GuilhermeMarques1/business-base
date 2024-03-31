@@ -6,19 +6,19 @@ const localstg = localStorage.getItem('@business-base:data')
 const newData = JSON.parse(localstg || '[]')
 
 const data = {
-  labels: newData.labels,
+  labels: newData.labels ?? ['jan', 'fev', 'mar', 'abr'],
   datasets: [
     {
       type: 'bar',
       label: 'Bar Dataset',
-      data: newData.data,
+      data: newData.data ?? [0, 0, 0, 0],
       borderColor: 'rgb(255, 99, 132)',
       backgroundColor: 'rgba(255, 99, 132, 0.2)'
     },
     {
       type: 'line',
       label: 'Line Dataset',
-      data: newData.data,
+      data: newData.data ?? [0, 0, 0, 0],
       fill: false,
       borderColor: 'rgb(54, 162, 235)'
     }

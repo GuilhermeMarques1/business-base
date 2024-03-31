@@ -39,10 +39,19 @@ import IconSale from './icons/IconSale.vue'
 <script lang="ts">
 const localstg = localStorage.getItem('@business-base:data')
 const newData = JSON.parse(localstg || '[]')
-const length = newData.labels.length
+const length = newData?.labels?.length
 
 export default {
   data() {
+    if (!length) {
+      return {
+        valorVendas: 0,
+        novosClientes: 0,
+        churnPercentage: 0,
+        periodo: 'Adicione um arquivo na página de upload para ver as métricas'
+      }
+    }
+
     return {
       valorVendas: newData.total,
       novosClientes: newData.customers,
